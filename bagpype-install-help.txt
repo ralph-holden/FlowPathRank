@@ -1,0 +1,112 @@
+HOW TO install BagPype for Anaconda (windows)
+
+
+### Download BagPype ###
+
+Open up Command Prompt
+
+Download the BagPype code from GitHub...
+git clone --config core.protectNTFS=false --filter=blob:none https://github.com/FlorianSong/BagPype
+
+(if you don't have git> pip install git)
+
+
+
+### Set up virtual environment ###
+
+Open up Anaconda Prompt
+
+Create virtual environment...
+conda create -n bagpype_env numpy=1.21.5 scipy==1.9.3
+
+Enter virtual environment...
+conda activate bagpype_env
+
+Install the other dependencies for Bagpype...
+
+pip install networkx==2.8.4
+
+pip install pandas==1.4.4
+
+pip install PyCifRW
+^ might need to install Visual Studio Editor before pip installing PyCifRW
+Can be found at https://visualstudio.microsoft.com/visual-cpp-build-tools/
+Need to download the build tools, then the 'Desktop Development with C++' package
+^This will take a few minutes
+
+NOTE: direct 'pip install matplotlib==3.7.3' will also pip install numpy==1.26.4, overwriting previous
+pip download matplotlib==3.7.3
+pip install contourpy-1.3.0-cp310-cp310-win_amd64.whl --no-deps
+pip install cycler-0.12.1-py3-none-any.whl --no-deps
+pip install fonttools-4.54.1-cp310-cp310-win_amd64.whl --no-deps
+pip install kiwisolver-1.4.7-cp310-cp310-win_amd64.whl --no-deps
+pip install packaging-24.1-py3-none-any.whl --no-deps
+pip install pillow-11.0.0-cp310-cp310-win_amd64.whl --no-deps
+pip install pyparsing-3.2.0-py3-none-any.whl --no-deps
+pip install python_dateutil-2.9.0.post0-py2.py3-none-any.whl --no-deps
+pip install six-1.16.0-py2.py3-none-any.whl --no-deps
+pip install matplotlib==3.7.3 --no-deps
+
+
+Now can pip install BagPype locally...
+
+First go into the downloaded BagPype folder...
+cd C:/Users/<me>/BagPype/
+pip install .
+^This will also take a few minutes
+
+
+
+### TEST ###
+
+Now you can open a Jupyter Notebook (or other) in the 'bagype_env' virtual environment.
+
+You can check if you have the correct versions...
+
+# Check correct version of dependencies
+
+import numpy as np
+print(f'''NumPy version is {np.__version__}
+Required NumPy version is 1.21.5
+''')
+
+import matplotlib as mpl
+print(f'''Matplotlib version is {mpl.__version__})
+Required Matplotlib version is 3.7.3
+''')
+
+import pandas as pd
+print(f'''Pandas version is {pd.__version__}
+Required Pandas version is 1.4.4
+''')
+
+import scipy as scp
+print(f'''SciPy version is {scp.__version__}
+Required SciPy version is 1.9.3
+''')
+
+import networkx as nx
+print(f'''NetworkX version is {nx.__version__}
+Required NetworkX version is 2.8.4
+''')
+
+
+Then...
+
+import bagpype
+^ the BagPype logo should print
+
+
+Checking the code will run (taken from https://github.com/FlorianSong/BagPype) ...
+NOTE: to obtain pdb from online repo, PDBParser default __init__ argument 'download' explicitly called as True
+
+myprot = bagpype.molecules.Protein()
+
+parser = bagpype.parsing.PDBParser('1mh1.pdb',download=True)
+parser.parse(myprot, strip = {'res_name': ['HOH']})
+
+ggenerator = bagpype.construction.Graph_constructor()
+ggenerator.construct_graph(myprot)
+
+
+
