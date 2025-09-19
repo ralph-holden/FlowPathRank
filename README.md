@@ -1,4 +1,4 @@
-ABSTRACT
+This work contains the core code - called "FlowPathRank", and a demo of the project outlined below...
 
 Allosteric drug targets present new opportunities for drug discovery. However, the allosteric mechanism
 is still not well understood. In this work, a theoretical framework to describe allosteric pathways with
