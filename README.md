@@ -7,4 +7,4 @@ pathways that optimise the graph-theoretical free energy. These methods are comb
 and benchmarked on alternative approaches and the theoretical understanding. Bridging theoretical
 and practical, computational predictions are evaluated with experimental data.
 
-A further description is provided at https://github.com/ralph-holden/FlowPathRank/blob/main/Presentation.pdf
+A further description is provided at https://github.com/ralph-holden/FlowPathRank/Presentation.pdf
